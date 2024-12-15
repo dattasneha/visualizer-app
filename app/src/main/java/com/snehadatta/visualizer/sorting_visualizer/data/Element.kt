@@ -1,7 +1,5 @@
 package com.snehadatta.visualizer.sorting_visualizer.data
 
-import dagger.hilt.android.AndroidEntryPoint
-
-data class SortingElements (
+data class Element (
     val value: Int
 )

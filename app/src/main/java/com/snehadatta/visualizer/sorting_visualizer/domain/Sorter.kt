@@ -1,7 +1,8 @@
 package com.snehadatta.visualizer.sorting_visualizer.domain
 
-import dagger.hilt.android.AndroidEntryPoint
+import com.snehadatta.visualizer.sorting_visualizer.data.Element
+import kotlinx.coroutines.flow.Flow
 
 interface Sorter {
-    fun bubbleSort(array: Array<Int>)
+    suspend fun sort(array: Array<Int>): Flow<List<Element>>
 }
