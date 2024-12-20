@@ -1,12 +1,13 @@
 package com.snehadatta.visualizer.sorting_visualizer.domain
 
 import com.snehadatta.visualizer.sorting_visualizer.data.Element
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class BubbleSort: Sorter {
-
+class BubbleSort @Inject constructor(): Sorter {
     override suspend fun sort(array: Array<Int>): Flow<List<Element>> = flow {
         val n = array.size
         for(i in 0 until n-1) {

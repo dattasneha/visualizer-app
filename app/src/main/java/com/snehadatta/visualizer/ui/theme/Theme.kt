@@ -1,4 +1,4 @@
-package com.snehadatta.visualizer.`material-theme`.ui.theme
+package com.snehadatta.visualizer.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

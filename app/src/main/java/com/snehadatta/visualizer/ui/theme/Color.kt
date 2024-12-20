@@ -1,4 +1,4 @@
-package com.snehadatta.visualizer.`material-theme`.ui.theme
+package com.snehadatta.visualizer.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF3F6900)

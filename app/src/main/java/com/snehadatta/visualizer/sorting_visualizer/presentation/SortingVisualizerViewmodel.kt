@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SortingVisualizerViewmodel@Inject constructor(
+class SortingVisualizerViewmodel @Inject constructor(
 private val bubbleSort: BubbleSort
 ) : ViewModel() {
     private val _state = mutableStateOf(SortingState())
