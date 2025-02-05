@@ -31,7 +31,9 @@ class SortingVisualizerViewModel @Inject constructor(
         arrayElements.value = array
         viewModelScope.launch {
             bubbleSort.sort(array).collect { result ->
-                _state.value = result
+                _state.value = state.value.copy(
+                    elements = result
+                )
             }
 
         }

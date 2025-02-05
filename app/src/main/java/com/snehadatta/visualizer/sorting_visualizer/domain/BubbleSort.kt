@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class BubbleSort @Inject constructor(): Sorter {
-    override fun sort(array: Array<Int>): Flow<SortingState> = flow {
+    override fun sort(array: Array<Int>): Flow<List<Element>> = flow {
         val n = array.size
         for(i in 0 until n) {
             for(j in 0 until n-i-1) {
@@ -18,13 +18,13 @@ class BubbleSort @Inject constructor(): Sorter {
                     array[j] = array[j+1]
                     array[j+1] = temp
 
-                    emit(SortingState(array.map { Element(value = it) }))
+                    emit(array.map { Element(value = it) })
                     delay(1000)
                 }
 
             }
         }
-        emit(SortingState(array.map { Element(value = it) }))
+        emit(array.map { Element(value = it) })
     }
 
 }

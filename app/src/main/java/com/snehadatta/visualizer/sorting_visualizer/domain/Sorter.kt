@@ -5,5 +5,5 @@ import com.snehadatta.visualizer.sorting_visualizer.presentation.SortingState
 import kotlinx.coroutines.flow.Flow
 
 interface Sorter {
-    fun sort(array: Array<Int>): Flow<SortingState>
+    fun sort(array: Array<Int>): Flow<List<Element>>
 }
