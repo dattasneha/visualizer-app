@@ -9,6 +9,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.snehadatta.visualizer.sorting_visualizer.domain.BubbleSort
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -21,17 +23,15 @@ class SortingVisualizerViewModel @Inject constructor(
 ) : ViewModel() {
 
     val arrayElements = mutableStateOf<Array<Int>>(emptyArray())
-    val tag = "ArrayDebug"
-    private val _state = mutableStateOf(SortingState())
-    val state: State<SortingState> = _state
+
+    private val _state = MutableStateFlow(SortingState())
+    val state : StateFlow<SortingState> = _state
 
     fun bubbleSortElements(array: Array<Int>) {
         arrayElements.value = array
         viewModelScope.launch {
             bubbleSort.sort(array).collect { result ->
-                _state.value = _state.value.copy(
-                    elements = result
-                )
+                _state.value = result
             }
 
         }

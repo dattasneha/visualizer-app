@@ -12,9 +12,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.snehadatta.visualizer.ui.theme.SortingVisualizerTheme
 import com.snehadatta.visualizer.sorting_visualizer.presentation.SortingVisualizerViewModel
@@ -27,16 +29,19 @@ class VisualizerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val arr = arrayOf(2,3,6,5,9,0,1,4)
+        val tag = "ArrayDebug"
+        sortingViewModel.bubbleSortElements(arr)
+
         setContent {
             SortingVisualizerTheme {
-                val arr = arrayOf(2,3,6,5,9,0,1,4)
-                sortingViewModel.bubbleSortElements(arr)
 
-
+                val state by sortingViewModel.state.collectAsStateWithLifecycle()
+                Log.d(tag, state.elements.toString())
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = state.elements.toString(),
                         modifier = Modifier.padding(innerPadding)
 
                     )
