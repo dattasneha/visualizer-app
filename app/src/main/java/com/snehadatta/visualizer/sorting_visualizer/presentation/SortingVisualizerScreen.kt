@@ -111,7 +111,7 @@ fun SortingVisualizerScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
-                    modifier = Modifier.width(250.dp),
+                    modifier = Modifier.width(250.dp)
                 ) {
                     SliderWithLabel(1f..9f, 10,speedSliderPosition)
                 }
@@ -140,14 +140,19 @@ fun SortingVisualizerScreen(
                     }
                 }
             )
+            Box(
+                modifier= Modifier
+                .padding(top = 10.dp)
+                    .align(Alignment.CenterHorizontally)
+            ) {
+                Button(
+                    modifier = Modifier,
+                    onClick = { /* Action */ }, colors = ButtonDefaults.buttonColors(primaryContainerDark)) {
+                    Text("SORT")
 
-            Button(
-                modifier = Modifier
-                    .padding(top = 10.dp),
-                onClick = { /* Action */ }, colors = ButtonDefaults.buttonColors(primaryContainerDark)) {
-                Text("SORT")
-
+                }
             }
+
 
 
         }
