@@ -49,13 +49,15 @@ private val dropDownItems = arrayOf("BUBBLE SORT","SELECTION SORT","INSERTION SO
 fun SortingVisualizerScreen(
     values: List<Element>,
     maxHeight: Dp,
+    modifier: Modifier
 ) {
     val floatValues: List<Float> = values.map {it.value.toFloat()}
     var values by remember { mutableStateOf("") }
     val defaultItem = remember {
         mutableStateOf(0)
     }
-    var sliderPosition = remember { mutableFloatStateOf(0f) }
+    var speedSliderPosition = remember { mutableFloatStateOf(0f) }
+    var numberOfElementsSliderPosition = remember { mutableFloatStateOf(0f) }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -82,7 +84,7 @@ fun SortingVisualizerScreen(
 
             }
 
-            SliderWithLabel(0f..10f,2,sliderPosition)
+            SliderWithLabel(0f..10f,2,numberOfElementsSliderPosition)
 
             Box (
                 modifier = Modifier
@@ -111,7 +113,7 @@ fun SortingVisualizerScreen(
                 Box(
                     modifier = Modifier.width(250.dp),
                 ) {
-                    SliderWithLabel(1f..9f, 10,sliderPosition)
+                    SliderWithLabel(1f..9f, 10,speedSliderPosition)
                 }
                 Button(
                     modifier = Modifier.padding(end = 8.dp),
@@ -153,14 +155,14 @@ fun SortingVisualizerScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun SortingVisualizerScreenPreview() {
-    SortingVisualizerTheme {
-        SortingVisualizerScreen(
-            values = emptyList(),
-            maxHeight = 300.dp
-        )
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun SortingVisualizerScreenPreview() {
+//    SortingVisualizerTheme {
+//        SortingVisualizerScreen(
+//            values = emptyList(),
+//            maxHeight = 300.dp
+//        )
+//    }
+//}
 
